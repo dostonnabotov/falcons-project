@@ -56,6 +56,7 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
+  background-color: var(--gray-9);
 }
 
 /* =============
@@ -116,24 +117,23 @@ body {
 /* sections
 ============== */
 section {
-  min-height: 60vh;
+  min-height: 90vh;
 }
 
 .hero {
   display: grid;
-  align-items: center;
   color: var(--gray-1);
   background-color: rgba(0, 0, 0, 0.65);
+  padding-block: var(--size-fluid-7);
   position: relative;
-  padding-block: var(--size-fluid-5);
 }
 
 .hero__title {
-  font-size: var(--font-size-fluid-3);
+  font-size: clamp(3rem, 15vw, 5rem);
 }
 
 .hero__content {
-  font-size: clamp(var(--font-size-1), 4vw, var(--font-size-3));
+  font-size: clamp(var(--font-size-1), 4vw, var(--font-size-4));
   color: var(--gray-3);
 }
 
