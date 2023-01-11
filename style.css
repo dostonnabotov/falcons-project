@@ -65,58 +65,58 @@ body {
 ============== */
 
 /* Tooltip container */
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+
+@media (min-width: 50em) {
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 350px;
+    background-color: var(--gray-12);
+    color: #fff;
+    padding: var(--size-3) var(--size-5);
+    border-radius: 6px;
+    top: 150%;
+    left: 50%;
+    margin-left: -300px; /* Use half of the width (120/2 = 60), to center the tooltip */
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%; /* At the top of the tooltip */
+    right: 10%;
+    margin-left: -5px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent var(--green-8) transparent;
+  }
+
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
 }
 
-/* Tooltip text */
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 350px;
-  background-color: var(--gray-12);
-  color: #fff;
-  padding: var(--size-3) var(--size-5);
-  border-radius: 6px;
-  top: 150%;
-  left: 50%;
-  margin-left: -300px; /* Use half of the width (120/2 = 60), to center the tooltip */
-
-  /* Position the tooltip text - see examples below! */
-  position: absolute;
-  z-index: 1;
-}
-
-.tooltip .tooltiptext::after {
-  content: " ";
-  position: absolute;
-  bottom: 100%; /* At the top of the tooltip */
-  right: 10%;
-  margin-left: -5px;
-  border-width: 8px;
-  border-style: solid;
-  border-color: transparent transparent var(--green-8) transparent;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
-
-/* buttons
-============== */
-.btn {
-  background-color: var(--green-8);
-  display: inline-block;
-  padding: var(--size-2) var(--size-3);
-  border-radius: var(--radius-2);
+@media (max-width: 50em) {
+  .tooltiptext {
+    display: none;
+  }
 }
 
 /* sections
 ============== */
 section {
-  min-height: 50vh;
+  min-height: 60vh;
 }
 
 .hero {
@@ -195,6 +195,7 @@ header {
 
 .mobile-nav-toggle {
   display: none;
+  font-size: var(--size-4);
 }
 
 @media (max-width: 50em) {
@@ -217,7 +218,12 @@ header {
 
   .nav__list {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: start;
+  }
+
+  .nav-link {
+    border-bottom: 2px solid var(--green-8);
+    border-left: 2px solid var(--green-8);
   }
 
   .mobile-nav-toggle {
@@ -248,6 +254,15 @@ header {
   .nav[data-role="primary"] {
     inset: 0;
   }
+}
+
+/* buttons
+============== */
+.btn {
+  background-color: var(--green-8);
+  display: inline-block;
+  padding: var(--size-2) var(--size-3);
+  border-radius: var(--radius-2);
 }
 
 /* =============
