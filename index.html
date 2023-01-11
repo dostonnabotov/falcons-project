@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="/main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="header | container">
+        <a href="#" class="logo">
+          <span class="logo__text">Falcons project</span>
+          <img class="logo__img" src="/tree.png" alt="" />
+        </a>
+        <button
+          class="mobile-nav-toggle"
+          id="mobile-nav-toggle"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+        >
+          <i class="fas fa-bars"></i>
+          <i class="fas fa-times"></i>
+          <span class="sr-only">Menu</span>
+        </button>
+        <nav class="nav" data-role="primary" id="primary-nav">
+          <ul role="list" class="nav__list">
+            <li><a href="#" class="nav-link">About Us</a></li>
+            <li>
+              <a href="#" class="nav-link">What We <Doc></Doc></a>
+            </li>
+            <li>
+              <a href="#" class="nav-link | tooltip"
+                >Subscripton
+                <span class="tooltiptext"
+                  >Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Deserunt neque sunt odit, repellendus impedit vitae laboriosam
+                  voluptates nostrum dicta consectetur qui temporibus facere
+                  quibusdam in itaque exercitationem architecto voluptatem
+                  rerum?</span
+                >
+              </a>
+            </li>
+            <li><a href="#" class="nav-link | btn">Donate</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero__title">Strength in Unity</h1>
+        <div class="hero__content | flow">
+          <p>
+            We don’t have to accept doom and gloom for the Earth. Together, we
+            can slow the dual crises of climate and biodiversity loss. This is a
+            hopeful wake-up call, but only if we act with great urgency.
+          </p>
+          <a href="#" class="btn">Donate Now</a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

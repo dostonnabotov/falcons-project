@@ -1,0 +1,267 @@
+@import "https://unpkg.com/open-props";
+/* =============
+ * Reset
+============== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p:not([class]) {
+  max-width: 50ch;
+}
+/* =============
+ * Composition
+============== */
+.container {
+  width: min(100% - 2rem, 60rem);
+  margin-inline: auto;
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-spacer, 1rem);
+}
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+/* =============
+ * Global
+============== */
+body {
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* =============
+ * Block
+============== */
+/* Tooltip
+============== */
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 350px;
+  background-color: var(--gray-12);
+  color: #fff;
+  padding: var(--size-2) var(--size-3);
+  border-radius: 6px;
+  top: 150%;
+  left: 50%;
+  margin-left: -300px; /* Use half of the width (120/2 = 60), to center the tooltip */
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%; /* At the top of the tooltip */
+  right: 10%;
+  margin-left: -5px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent var(--green-8) transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* buttons
+============== */
+.btn {
+  background-color: var(--green-8);
+  display: inline-block;
+  padding: var(--size-2) var(--size-3);
+  border-radius: var(--radius-2);
+}
+
+/* sections
+============== */
+section {
+  min-height: 50vh;
+}
+
+.hero {
+  display: grid;
+  align-items: center;
+  color: var(--gray-1);
+  background-color: rgba(0, 0, 0, 0.65);
+  position: relative;
+}
+
+.hero__title {
+  font-size: var(--font-size-fluid-3);
+}
+
+.hero__content {
+  font-size: var(--font-size-3);
+  color: var(--gray-3);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/nature.jpg");
+  background-size: cover;
+  z-index: -1;
+}
+
+/* navbar
+============== */
+header {
+  padding-block: var(--size-fluid-2);
+  box-shadow: var(--shadow-2);
+  background-color: #222;
+  color: #fff;
+}
+
+.header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--size-2);
+}
+
+.logo__text {
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-7);
+  width: min-content;
+  line-height: 1;
+}
+
+.logo__img {
+  height: 5ex;
+  width: auto;
+  flex: none;
+}
+
+.nav__list {
+  display: flex;
+  gap: clamp(1.5rem, 5vw, 3rem);
+  align-items: center;
+}
+
+.nav-link {
+  padding: var(--size-2) var(--size-3);
+  font-weight: 500;
+}
+
+.mobile-nav-toggle {
+  display: none;
+}
+
+@media (max-width: 50em) {
+  .nav[data-role="primary"] {
+    position: absolute;
+    inset: 0 0 0 20%;
+    padding-block: max(4rem, 20vh);
+    padding-inline: clamp(2rem, 10vw, 6rem);
+    text-align: center;
+    background-color: #222;
+    z-index: 10;
+    transition: transform 250ms ease-in-out;
+    transform: translateX(100%);
+    /* display: none; */
+  }
+
+  .nav[data-role="primary"].active {
+    transform: translateX(0);
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+    line-height: 1;
+    padding: 0.2em;
+    background-color: transparent;
+    color: #fff;
+    border: 0;
+    z-index: 100;
+    cursor: pointer;
+  }
+
+  .mobile-nav-toggle .fas.fa-times {
+    display: none;
+  }
+
+  .mobile-nav-toggle[aria-expanded="true"] .fas.fa-times {
+    display: block;
+  }
+
+  .mobile-nav-toggle[aria-expanded="true"] .fas.fa-bars {
+    display: none;
+  }
+}
+
+@media (max-width: 30em) {
+  .nav[data-role="primary"] {
+    inset: 0;
+  }
+}
+
+/* =============
+ * Exception
+============== */
+.sr-only {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
+}
